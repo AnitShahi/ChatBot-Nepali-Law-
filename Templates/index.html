@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Assistance for Nepali Law</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            font-size: 1.1rem;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: #007bff !important;
+        }
+
+        .bg {
+            /* The image used */
+            background-image: url("{{ url_for('static', filename='ashal.png') }}");
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            padding-top: 80px; /* Adjust for the fixed navbar */
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 0;
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            padding: 50px 0;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+
+        /* Additional Body Content Styles */
+        .additional-content {
+            background-color: #ffffff;
+            padding: 50px;
+            margin-top: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        .additional-content h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .additional-content h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #0056b3;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .additional-content p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .additional-content ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            color: #555;
+        }
+
+        .additional-content li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Highlighted section for law details */
+        .highlighted-section {
+            background-color: #e9ecef;
+            padding: 40px;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlighted-section h3 {
+            color: #007bff;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .highlighted-section p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .highlighted-section ul {
+            list-style-type: circle;
+            margin-left: 20px;
+        }
+
+        .highlighted-section li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Virtual Assistance for Nepali Law</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('chatbot') }}">Virtual Assistance</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Background Image -->
+    <div class="bg">
+        <div class="overlay"></div>
+        <!-- Main Content -->
+        <div class="container content">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Welcome to Virtual Assistance for Nepali Law</h1>
+                    <p>Our platform is dedicated to providing comprehensive legal assistance tailored to the laws of Nepal. Whether you are seeking guidance on property law, civil rights, or any other legal matter within the jurisdiction of Nepal, our virtual assistant is here to help.</p>
+                    <p>Navigate the complexities of the legal system with ease. Our virtual assistant is equipped with up-to-date information on various laws, amendments, and legal procedures specific to Nepal, ensuring you receive accurate and relevant advice.</p>
+                    <a href="{{ url_for('chatbot') }}" class="btn btn-primary btn-lg">Try Our Virtual Assistance</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Content -->
+    <div class="container additional-content">
+        <h2>Understanding Nepali Law</h2>
+        <p>Nepali law is a diverse and comprehensive legal system that draws from various influences, including Hindu legal traditions, British common law, and modern democratic principles. The Constitution of Nepal, adopted in 2015, is the supreme law of the land and outlines the fundamental rights and duties of citizens.</p>
+        
+        <h3>Key Areas of Nepali Law</h3>
+        <ul>
+            <li><strong>Civil Law:</strong> Governs personal and property rights, including family law, inheritance, and contracts.</li>
+            <li><strong>Criminal Law:</strong> Defines crimes and prescribes punishments for offenses such as theft, assault, and fraud.</li>
+            <li><strong>Property Law:</strong> Regulates the ownership, transfer, and use of land and property, a critical area in a predominantly agrarian society.</li>
+            <li><strong>Constitutional Law:</strong> Focuses on the interpretation and application of the Constitution, including the protection of fundamental rights.</li>
+            <li><strong>Environmental Law:</strong> A growing field that addresses the protection of natural resources and the environment.</li>
+        </ul>
+
+        <div class="highlighted-section">
+            <h3>The Role of the Nepali Law Chatbot</h3>
+            <p>The Nepali Law Chatbot is designed to make legal information accessible to all citizens, regardless of their background or expertise. By leveraging advanced artificial intelligence, the chatbot provides instant answers to legal questions, helping users understand their rights and responsibilities under Nepali law.</p>
+            <p>Key benefits of the Nepali Law Chatbot include:</p>
+            <ul>
+                <li><strong>Accessibility:</strong> Available 24/7, the chatbot ensures that users can get legal information whenever they need it, without the need to visit a lawyer or legal expert.</li>
+                <li><strong>Cost-Effective:</strong> The chatbot provides free legal information, reducing the financial barriers to accessing legal advice.</li>
+                <li><strong>Educational:</strong> The chatbot helps users learn about the legal system in Nepal, empowering them to make informed decisions.</li>
+                <li><strong>Confidentiality:</strong> Interactions with the chatbot are private, ensuring that users can seek information without fear of judgment or exposure.</li>
+            </ul>
+        </div>
+
+        <h3>Legal Reforms and Future Developments</h3>
+        <p>Nepal is undergoing significant legal reforms aimed at modernizing its legal system and aligning it with international standards. These reforms include efforts to improve access to justice, strengthen the rule of law, and protect human rights.</p>
+        <p>The Nepali Law Chatbot will continue to evolve alongside these developments, providing users with up-to-date information on the latest legal changes and helping to bridge the gap between the legal system and the public.</p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

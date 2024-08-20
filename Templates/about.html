@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #f8f9fa;
+        }
+
+        .nav-link {
+            color: #f8f9fa !important;
+            font-size: 1.1rem;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: #007bff !important;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 2.5rem;
+        }
+
+        .college-logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 100px;
+            margin-top: 20px;
+        }
+
+        .developer-section {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .developer-box {
+            background-color: #ffffff;
+            padding: 20px;
+            margin: 10px;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .developer-box img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        .developer-box h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .developer-box p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .college-name {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ url_for('home') }}">Virtual Assistance for Nepali Law</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('chatbot') }}">Virtual Assistance</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Page Content -->
+    <div class="container">
+        <h1>About Us</h1>
+        <div class="college-name">
+            <img src="static/khwopalogo.png" alt="Khwopa Engineering College" class="college-logo">
+            <p>Khwopa Engineering College</p>
+        </div>
+
+        <div class="developer-section">
+            <div class="developer-box">
+                <img src="static/anit.jpg" alt="Anit Shahi">
+                <h3>Anit Shahi</h3>
+                <p>AI Developer</p>
+            </div>
+            <div class="developer-box">
+                <img src="static/ashlee.png" alt="Ashal Upreti">
+                <h3>Ashal Upreti</h3>
+                <p>Backend Developer</p>
+            </div>
+            <div class="developer-box">
+                <img src="static/jiban.png" alt="Jiban Rawal">
+                <h3>Jiban Rawal</h3>
+                <p>Frontend Developer</p>
+            </div>
+            <div class="developer-box">
+                <img src="static/madan.png" alt="Madan Acharya">
+                <h3>Madan Acharya</h3>
+                <p>Full Stack Developer</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
