@@ -18,27 +18,49 @@
         }
 
         .navbar {
-            background-color: #343a40;
+            background-color: #f5f5dc; /* Creamy white background */
             border-radius: 0 0 15px 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 1000;
+            padding: 15px 0;
         }
 
         .navbar-brand {
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
+            color: #333 !important;
+            font-family: 'Merriweather', serif; /* Elegant serif font */
         }
 
         .nav-link {
-            font-size: 1.1rem;
-            transition: color 0.3s ease-in-out;
+            font-size: 1.2rem;
+            color: #333 !important;
+            font-weight: bold;
+            font-family: 'Lora', serif; /* Elegant serif font */
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
         }
 
         .nav-link:hover {
-            color: #007bff !important;
+            color: #3498db !important;
+            transform: translateY(-3px);
+        }
+
+        .nav-item.active .nav-link {
+            color: #e74c3c !important;
+            transform: translateY(-3px);
+        }
+
+        .navbar-toggler {
+            border: none;
+            background-color: #e74c3c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-toggler-icon {
+            background-image: linear-gradient(45deg, #ffffff, #ffffff);
         }
 
         .bg {
@@ -49,7 +71,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             position: relative;
-            padding-top: 80px; /* Adjust for the fixed navbar */
+            padding-top: 90px; /* Adjust for the fixed navbar */
         }
 
         .overlay {
@@ -94,92 +116,116 @@
             border-color: #004085;
         }
 
-        /* Additional Body Content Styles */
-        .additional-content {
-            background-color: #ffffff;
-            padding: 50px;
+        /* Service Cards Styles */
+        .service-cards {
             margin-top: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            color: #333;
         }
 
-        .additional-content h2 {
+        .service-card {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            background-color: #fff;
+            height: 400px; /* Set a fixed height for uniform size */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 150px; /* Fixed height for images */
+            object-fit: cover; /* Ensure the image covers the space without distortion */
+            margin-bottom: 20px;
+        }
+
+        .service-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            font-size: 1rem;
+            color: #666;
+            flex-grow: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Legal News Section */
+        .latest-work {
+            margin-top: 50px;
+        }
+
+        .latest-work h2 {
             font-size: 2.5rem;
             font-weight: bold;
             color: #007bff;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
-        .additional-content h3 {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #0056b3;
-            margin-top: 20px;
-            margin-bottom: 15px;
+        .latest-work .work-item {
+            margin-bottom: 30px;
         }
 
-        .additional-content p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        .additional-content ul {
-            list-style-type: disc;
-            margin-left: 20px;
-            color: #555;
-        }
-
-        .additional-content li {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        /* Highlighted section for law details */
-        .highlighted-section {
-            background-color: #e9ecef;
-            padding: 40px;
+        .latest-work .work-item img {
+            width: 100%;
+            height: auto;
             border-radius: 10px;
-            margin-top: 30px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .highlighted-section h3 {
+        /* Footer Styles */
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 50px 0;
+            margin-top: 50px;
+        }
+
+        .footer .footer-links,
+        .footer .footer-contact {
+            margin-bottom: 30px;
+        }
+
+        .footer h5 {
+            font-size: 1.5rem;
             color: #007bff;
-            font-size: 2rem;
             margin-bottom: 20px;
         }
 
-        .highlighted-section p {
-            font-size: 1.2rem;
-            color: #333;
-        }
-
-        .highlighted-section ul {
-            list-style-type: circle;
-            margin-left: 20px;
-        }
-
-        .highlighted-section li {
-            font-size: 1.1rem;
+        .footer p,
+        .footer a {
+            color: #ccc;
+            font-size: 1rem;
             margin-bottom: 10px;
-            color: #333;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #007bff;
         }
     </style>
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
+            <!-- Waving Flag -->
+            <img src="{{ url_for('static', filename='WavingFlag.gif') }}" alt="Nepal Flag" style="height: 45px; margin-right: 10px;">
+            
             <a class="navbar-brand" href="{{ url_for('home') }}">Virtual Assistance for Nepali Law</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
@@ -187,6 +233,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('chatbot') }}">Virtual Assistance</a>
                     </li>
+                    {% if not session.get('logged_in') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -208,35 +263,83 @@
         </div>
     </div>
 
-    <!-- Additional Content -->
-    <div class="container additional-content">
-        <h2>Understanding Nepali Law</h2>
-        <p>Nepali law is a diverse and comprehensive legal system that draws from various influences, including Hindu legal traditions, British common law, and modern democratic principles. The Constitution of Nepal, adopted in 2015, is the supreme law of the land and outlines the fundamental rights and duties of citizens.</p>
-        
-        <h3>Key Areas of Nepali Law</h3>
-        <ul>
-            <li><strong>Civil Law:</strong> Governs personal and property rights, including family law, inheritance, and contracts.</li>
-            <li><strong>Criminal Law:</strong> Defines crimes and prescribes punishments for offenses such as theft, assault, and fraud.</li>
-            <li><strong>Property Law:</strong> Regulates the ownership, transfer, and use of land and property, a critical area in a predominantly agrarian society.</li>
-            <li><strong>Constitutional Law:</strong> Focuses on the interpretation and application of the Constitution, including the protection of fundamental rights.</li>
-            <li><strong>Environmental Law:</strong> A growing field that addresses the protection of natural resources and the environment.</li>
-        </ul>
-
-        <div class="highlighted-section">
-            <h3>The Role of the Nepali Law Chatbot</h3>
-            <p>The Nepali Law Chatbot is designed to make legal information accessible to all citizens, regardless of their background or expertise. By leveraging advanced artificial intelligence, the chatbot provides instant answers to legal questions, helping users understand their rights and responsibilities under Nepali law.</p>
-            <p>Key benefits of the Nepali Law Chatbot include:</p>
-            <ul>
-                <li><strong>Accessibility:</strong> Available 24/7, the chatbot ensures that users can get legal information whenever they need it, without the need to visit a lawyer or legal expert.</li>
-                <li><strong>Cost-Effective:</strong> The chatbot provides free legal information, reducing the financial barriers to accessing legal advice.</li>
-                <li><strong>Educational:</strong> The chatbot helps users learn about the legal system in Nepal, empowering them to make informed decisions.</li>
-                <li><strong>Confidentiality:</strong> Interactions with the chatbot are private, ensuring that users can seek information without fear of judgment or exposure.</li>
-            </ul>
+    <!-- Service Cards Section -->
+    <div class="container service-cards">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="{{ url_for('static', filename='imgok.jpg') }}" alt="Service 1">
+                    <h4>Legal Documentation</h4>
+                    <p>Get assistance with preparing and understanding legal documents according to Nepali law.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="{{ url_for('static', filename='OIP.jpg') }}" alt="Service 2">
+                    <h4>Property Law Consultation</h4>
+                    <p>Receive expert advice on property ownership, transfer, and disputes under Nepali law.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-card">
+                    <img src="{{ url_for('static', filename='download.jpg') }}" alt="Service 3">
+                    <h4>Civil Rights Guidance</h4>
+                    <p>Understand your civil rights and how to protect them in accordance with the Constitution of Nepal.</p>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <h3>Legal Reforms and Future Developments</h3>
-        <p>Nepal is undergoing significant legal reforms aimed at modernizing its legal system and aligning it with international standards. These reforms include efforts to improve access to justice, strengthen the rule of law, and protect human rights.</p>
-        <p>The Nepali Law Chatbot will continue to evolve alongside these developments, providing users with up-to-date information on the latest legal changes and helping to bridge the gap between the legal system and the public.</p>
+    <!-- Legal News Section -->
+    <div class="container latest-work">
+        <h2>Legal News</h2>
+        <div class="row">
+            <div class="col-md-4 work-item">
+                <img src="{{ url_for('static', filename='OIP.jpg') }}" alt="News 1">
+                <p class="mt-2"><strong>New Property Law Amendments Passed in Nepal</strong></p>
+                <p class="mt-2">The government of Nepal has passed new amendments to the property law, aimed at making the transfer of property rights easier and more transparent...</p>
+                <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+            <div class="col-md-4 work-item">
+                <img src="{{ url_for('static', filename='download.jpg') }}" alt="News 2">
+                <p class="mt-2"><strong>Supreme Court Ruling on Civil Rights Case</strong></p>
+                <p class="mt-2">The Supreme Court of Nepal has ruled in favor of the plaintiff in a landmark civil rights case that is expected to have wide-reaching implications...</p>
+                <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+            <div class="col-md-4 work-item">
+                <img src="{{ url_for('static', filename='okya.jpg') }}" alt="News 3">
+                <p class="mt-2"><strong>New Legal Framework for Digital Transactions</strong></p>
+                <p class="mt-2">Nepal has introduced a new legal framework to govern digital transactions and e-commerce, ensuring better protection for consumers and businesses...</p>
+                <a href="#" class="btn btn-primary">Read More</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 footer-links">
+                    <h5>Quick Links</h5>
+                    <a href="{{ url_for('home') }}">Home</a><br>
+                    <a href="{{ url_for('about') }}">About Us</a><br>
+                    <a href="#">Services</a><br>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="col-md-4 footer-contact">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@nepalilaw.com</p>
+                    <p>Phone: +977-1-1234567</p>
+                    <p>Address: Kathmandu, Nepal</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <a href="#">Facebook</a><br>
+                    <a href="#">Twitter</a><br>
+                    <a href="#">LinkedIn</a>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap JS and dependencies -->

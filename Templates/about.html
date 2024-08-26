@@ -21,6 +21,11 @@
             background-color: #343a40;
             border-radius: 0 0 15px 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
         }
 
         .navbar-brand {
@@ -39,9 +44,14 @@
             color: #007bff !important;
         }
 
+        .nav-item.active .nav-link {
+            color: #e74c3c !important;
+            transform: translateY(-3px);
+        }
+
         h1 {
             text-align: center;
-            margin-top: 30px;
+            margin-top: 100px;
             font-size: 2.5rem;
         }
 
@@ -106,14 +116,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('about') }}">About Us</a>
+                        <a class="nav-link active" aria-current="page" href="{{ url_for('about') }}">About Us</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url_for('chatbot') }}">Virtual Assistance</a>
                     </li>
+                    {% if not session.get('logged_in') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
@@ -122,28 +141,28 @@
     <div class="container">
         <h1>About Us</h1>
         <div class="college-name">
-            <img src="static/khwopalogo.png" alt="Khwopa Engineering College" class="college-logo">
+            <img src="{{ url_for('static', filename='khwopalogo.png') }}" alt="Khwopa Engineering College" class="college-logo">
             <p>Khwopa Engineering College</p>
         </div>
 
         <div class="developer-section">
             <div class="developer-box">
-                <img src="static/anit.jpg" alt="Anit Shahi">
+                <img src="{{ url_for('static', filename='anit.jpg') }}" alt="Anit Shahi">
                 <h3>Anit Shahi</h3>
                 <p>Frontend Developer</p>
             </div>
             <div class="developer-box">
-                <img src="static/ashlee.png" alt="Ashal Upreti">
+                <img src="{{ url_for('static', filename='ashlee.png') }}" alt="Ashal Upreti">
                 <h3>Ashal Upreti</h3>
                 <p>Backend Developer</p>
             </div>
             <div class="developer-box">
-                <img src="static/jiban.png" alt="Jiban Rawal">
+                <img src="{{ url_for('static', filename='jiban.png') }}" alt="Jiban Rawal">
                 <h3>Jiban Rawal</h3>
                 <p>AI Developer</p>
             </div>
             <div class="developer-box">
-                <img src="static/madan.png" alt="Madan Acharya">
+                <img src="{{ url_for('static', filename='madan.png') }}" alt="Madan Acharya">
                 <h3>Madan Acharya</h3>
                 <p>Full Stack Developer</p>
             </div>

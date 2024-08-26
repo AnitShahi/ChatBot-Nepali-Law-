@@ -1,46 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login & Registration Form</title>
- 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration Form</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            width: 100%;
+            background: linear-gradient(135deg, #009579, #006653); /* Gradient background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 430px;
+            width: 100%;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .container .registration {
+            display: none;
+        }
+
+        #check:checked ~ .registration {
+            display: block;
+        }
+
+        #check:checked ~ .login {
+            display: none;
+        }
+
+        #check {
+            display: none;
+        }
+
+        .container .form {
+            padding: 2rem;
+        }
+
+        .form header {
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .form input {
+            height: 60px;
+            width: 100%;
+            padding: 0 15px;
+            font-size: 17px;
+            margin-bottom: 1.3rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .form input:focus {
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .form a {
+            font-size: 16px;
+            color: #009579;
+            text-decoration: none;
+        }
+
+        .form a:hover {
+            text-decoration: underline;
+        }
+
+        .form input.button {
+            color: #fff;
+            background: #009579;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-top: 1.7rem;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+
+        .form input.button:hover {
+            background: #006653;
+        }
+
+        .signup {
+            font-size: 17px;
+            text-align: center;
+        }
+
+        .signup label {
+            color: #009579;
+            cursor: pointer;
+        }
+
+        .signup label:hover {
+            text-decoration: underline;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <input type="checkbox" id="check">
-    
-    <!-- Login Form -->
-    <div class="login form">
-      <header>Login</header>
-      <form action="{{ url_for('login') }}" method="POST">
-        <input type="text" name="email" placeholder="Enter your email" required>
-        <input type="password" name="password" placeholder="Enter your password" required>
-        <a href="#">Forgot password?</a>
-        <input type="submit" class="button" value="Login">
-      </form>
-      <div class="signup">
-        <span class="signup">Don't have an account?
-          <label for="check">Signup</label>
-        </span>
-      </div>
+    <div class="container">
+        <input type="checkbox" id="check">
+        
+        <!-- Login Form -->
+        <div class="login form">
+            <header>Login</header>
+            <div class="error" id="login-error"></div>
+            <form onsubmit="return validateLogin()" action="{{ url_for('login') }}" method="POST">
+                <input type="text" name="username" id="login-username" placeholder="Enter your username" required>
+                <input type="password" name="password" id="login-password" placeholder="Enter your password" required>
+                <a href="#">Forgot password?</a>
+                <input type="submit" class="button" value="Login">
+            </form>
+            <div class="signup">
+                <span class="signup">Don't have an account?
+                    <label for="check">Signup</label>
+                </span>
+            </div>
+        </div>
+        
+        <!-- Signup Form -->
+        <div class="registration form">
+            <header>Signup</header>
+            <div class="error" id="signup-error"></div>
+            <form onsubmit="return validateSignup()" action="{{ url_for('register') }}" method="POST">
+                <input type="text" name="username" id="signup-username" placeholder="Enter your username" required>
+                <input type="password" name="password" id="signup-password" placeholder="Create a password" required>
+                <input type="submit" class="button" value="Signup">
+            </form>
+            <div class="signup">
+                <span class="signup">Already have an account?
+                    <label for="check">Login</label>
+                </span>
+            </div>
+        </div>
     </div>
-    
-    <!-- Signup Form -->
-    <div class="registration form">
-      <header>Signup</header>
-      <form action="{{ url_for('signup') }}" method="POST">
-        <input type="text" name="email" placeholder="Enter your email" required>
-        <input type="password" name="password" placeholder="Create a password" required>
-        <input type="password" name="confirm_password" placeholder="Confirm your password" required>
-        <input type="submit" class="button" value="Signup">
-      </form>
-      <div class="signup">
-        <span class="signup">Already have an account?
-          <label for="check">Login</label>
-        </span>
-      </div>
-    </div>
-  </div>
+
+    <script>
+        function validateLogin() {
+            var username = document.getElementById('login-username').value;
+            var password = document.getElementById('login-password').value;
+            var errorElement = document.getElementById('login-error');
+
+            // Clear previous error messages
+            errorElement.style.display = 'none';
+
+            // Basic validation rules
+            if (username.length < 3) {
+                errorElement.innerText = 'Username must be at least 3 characters long.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+
+            if (password.length < 6) {
+                errorElement.innerText = 'Password must be at least 6 characters long.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateSignup() {
+            var username = document.getElementById('signup-username').value;
+            var password = document.getElementById('signup-password').value;
+            var errorElement = document.getElementById('signup-error');
+
+            // Clear previous error messages
+            errorElement.style.display = 'none';
+
+            // Basic validation rules
+            if (username.length < 3) {
+                errorElement.innerText = 'Username must be at least 3 characters long.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+
+            if (password.length < 6) {
+                errorElement.innerText = 'Password must be at least 6 characters long.';
+                errorElement.style.display = 'block';
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 </html>
